@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Homework</title>
+  </head>
+
+  <body>
+    <a href="#" class="card-link">Card link</a>
+    <a href="#" class="card-link">Another link</a>
+    <div class="card" style="width: 18rem">
+      <div class="card-body">
+        <h5 class="card-title" data-number="100">Card title</h5>
+        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+        <p class="card-text" data-number="50">
+          Some quick example text to build on the card title and make up the
+          bulk of the card's content.
+        </p>
+        <a href="#" id="super_link" class="card-link">Card link</a>
+        <a href="#" class="card-link" data-number="50">Another link</a>
+      </div>
+    </div>
+    <script>
+      const superEl = document.getElementById("super_link");
+      console.log(superEl);
+
+      const cardLinkEl = document.querySelectorAll(".card-link");
+      cardLinkEl.forEach((link) => {
+        link.textContent = "ссылка";
+      });
+
+      const cardBodyLinks = document.querySelectorAll(".card-body .card-link");
+      console.log(cardBodyLinks);
+
+      const firstDataNumber50 = document.querySelector('[data-number="50"]');
+      console.log(firstDataNumber50);
+
+      const titleTag = document.querySelector("title");
+      console.log(titleTag ? titleTag.textContent : "Тег title не найден");
+
+      const cardTitle = document.querySelector(".card-title");
+      console.log(cardTitle.parentNode);
+
+      const newParagraph = document.createElement("p");
+      newParagraph.textContent = "Привет";
+      const card = document.querySelector(".card");
+      card.insertBefore(newParagraph, card.firstChild);
+
+      const tagName = "h7";
+      const tag = document.querySelector(tagName);
+
+      tag ? tag.remove() : console.log(tagName + " отсутствует");
+    </script>
+  </body>
+</html>

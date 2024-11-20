@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <!-- <div id="block">
+      <p>1</p>
+      <p class="header">2</p>
+    </div>
+
+    <p class="www">text 1</p>
+    <p class="www">text 2</p> -->
+
+    <!-- <a href="#" class="link">link text html</a>
+    <img src="" alt="" class="photo" /> -->
+
+    <div class="content"></div>
+
+    <script>
+      //   const headerEl = document.querySelector(".header");
+      //   const blockEl = document.getElementById("block");
+      //   const p1El = document.querySelector("#block p:first-child");
+      //   console.log(headerEl);
+      //   console.log(blockEl);
+      //   console.log(p1El);
+      //   const wwwEl = document.querySelector(".www:first-of-type");
+      //   console.log(wwwEl);
+
+      // const linkEl = document.querySelector(".link");
+      // linkEl.textContent = "link text js";
+      // linkEl.href = "https://yandex.ru/search/?text=ya&lr=2";
+      // const imgEl = document.querySelector(".photo");
+      // imgEl.src =
+      //   "https://cdn.citilink.ru/m0A60sGmY6SqhuX8n4a1e7V1fj5pNd_8ICHU5MeAjfM/resizing_type:fit/gravity:sm/width:400/height:400/plain/product-images/8c9b37b9-1480-4d1b-8d4e-b4d209b4bd2c.jpg";
+
+      // const contentEl = document.querySelector(".content");
+      // const textEl = document.createElement("p");
+      // textEl.textContent = "Новый текстовый блок";
+      // contentEl.appendChild(textEl);
+      // contentEl.removeChild(textEl);
+
+      const contentEl = document.querySelector(".content");
+      const buttonEl = document.createElement("button");
+      buttonEl.textContent = "Отправить";
+      contentEl.appendChild(buttonEl);
+      let countClicks = 0;
+      buttonEl.onclick = function () {
+        ++countClicks;
+        if ((countClicks = 1)) {
+          buttonEl.textContent = "Текст отправлен";
+        }
+      };
+
+      // buttonEl.addEventListener("click", function (e) {
+      //   console.log(++countClicks);
+      // });
+    </script>
+  </body>
+</html>

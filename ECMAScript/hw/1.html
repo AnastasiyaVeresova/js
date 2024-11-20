@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- <div id="parent">
+        <div class="child1"></div>
+        <div class="child2">
+            <div class="target"></div>
+        </div>
+    </div> -->
+
+    <script>
+        const arr = [1, 5, 7, 9];
+        const minNumber = Math.min(...arr);
+        console.log(minNumber);
+
+        function createCounter(initialValue = 0) {
+            let count = initialValue;
+            return {
+                increment() {
+                    count++;
+                    return count;
+                },
+                decrement() {
+                    count--;
+                    return count;
+                },
+                getValue() {
+                    return count;
+                },
+            };
+        }
+
+        const counter = createCounter(8);
+
+        console.log(counter.getValue()); // 8
+        console.log(counter.increment()); // 9
+        console.log(counter.increment()); // 10
+        console.log(counter.decrement()); // 9
+        console.log(counter.getValue()); // 9
+
+        //         Напишите рекурсивную функцию findElementByClass, которая принимает корневой
+        // элемент дерева DOM и название класса в качестве аргументов и возвращает первый
+        // найденный элемент с указанным классом в этом дереве.
+        function findElementByClass(root, className) {
+            if (root.classList.contains(className)) {
+                return root;
+            }
+            for (let i = 0; i < root.children.length; i++) {
+                const found = findElementByClass(root.children[i], className);
+                if (found) {
+                    return found;
+                }
+            }
+            return null; // Если элемент с таким классом не найден
+        }
+        // Создаем родительский элемент
+        const parentDiv = document.createElement("div");
+        parentDiv.id = "parent";
+
+        // Создаем первый дочерний элемент
+        const child1Div = document.createElement("div");
+        child1Div.className = "child1";
+
+        // Создаем параграф с текстом
+        const paragraph = document.createElement("p");
+        paragraph.textContent = "Это параграф с текстом.";
+
+        // Добавляем параграф в первый дочерний элемент
+        child1Div.appendChild(paragraph);
+
+        // Создаем второй дочерний элемент
+        const child2Div = document.createElement("div");
+        child2Div.className = "child2";
+
+        // Создаем целевой элемент
+        const targetDiv = document.createElement("div");
+        targetDiv.className = "target";
+
+        // Собираем структуру
+        child2Div.appendChild(targetDiv);
+        parentDiv.appendChild(child1Div);
+        parentDiv.appendChild(child2Div);
+
+        // Добавляем родительский элемент в body
+        document.body.appendChild(parentDiv);
+
+        const rootElement = document.getElementById("parent");
+        const targetElement = findElementByClass(rootElement, "target");
+        console.log(targetElement);
+    </script>
+</body>
+
+</html>

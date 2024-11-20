@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			.an__image {
+				width: 300px;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- 1. Создать файл index.html
+     2. Подключить data.js
+     3. Добавить блок <div class="content"></div>
+     4. Создать переменную data и добавить в нее JSON parse данные из файла data.js
+     5. Вывести в консоль объект data
+     6. С помощью foreach обойти массив data
+     7. Вывести все изображения из данных -->
+
+		<div class="content"></div>
+		<!-- ====================================================== -->
+
+		<script src="data1.js"></script>
+
+		<script>
+			const contentEl = document.querySelector(".content");
+			const data = JSON.parse(dataInfo);
+
+			data.forEach((element) => {
+				const anBox = document.createElement("div");
+				anBox.classList.add("an-box");
+
+				const h2El = document.createElement("h2");
+				h2El.classList.add("an__API");
+				h2El.textContent = element.API;
+
+				const pEl = document.createElement("p");
+				pEl.classList.add("an__description");
+				pEl.textContent = element.Description;
+
+				const imageEl = document.createElement("img");
+				imageEl.classList.add("an__image");
+				imageEl.src = element.image;
+
+				contentEl.appendChild(anBox);
+				anBox.appendChild(h2El);
+				anBox.appendChild(pEl);
+				anBox.appendChild(imageEl);
+			});
+			// ======================================================
+		</script>
+	</body>
+</html>

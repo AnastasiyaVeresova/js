@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+        <script src="https://kit.fontawesome.com/0b29d40fd3.js" crossorigin="anonymous"></script>
+	</head>
+	<body>
+        
+		<!-- В html создать элемент checkbox и текст рядом с ним “Согласен с условиями”
+Добавить кнопку отправить
+При клике на кнопку отправить нужно проверять выбран ли активным элемент checkbox
+Если элемент не выбран, добавить текст под чекбоксом “Необходимо согласиться с условиями” -->
+		<!-- <div class="content">
+			<p>
+				Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima atque
+				quas, hic, adipisci reiciendis inventore aliquam sit error minus rerum
+				quia. Illum, sunt! Architecto dolorem expedita deserunt deleniti at
+				explicabo sunt praesentium ratione, reiciendis odio nisi in. Rerum,
+				nostrum illo? Quod odit dolores libero ab asperiores possimus quia
+				voluptatem illo vel qui, eos a reiciendis debitis impedit excepturi
+				vitae est sunt, vero, voluptatum architecto dolorem. Iusto, maxime
+				excepturi. Facilis nam repellat perspiciatis, necessitatibus aliquid
+				quis quam sunt, magnam optio quos vitae et quasi aperiam, impedit hic ad
+				tenetur alias at velit doloribus est. Omnis magni architecto itaque
+				aliquam sit dolor.
+			</p>
+			<div class="content__agree">
+				<input type="checkbox" class="check" id="check" checked />
+				<label for="check">Согласен с условиями</label>
+			</div>
+			<button class="button">Отправить</button>
+		</div> -->
+
+		<!-- 2=================================================== -->
+
+		<!-- В html создать 2 элемента радио кнопки (input type=”radio”) и текст “Чай”, “Кофе” соответственно
+Кнопка отправить
+Если выбран чай, необходимо вывести сообщение “Чай закончился”
+Если выбран кофе, необходимо вывести соообщение “кофе закончился” -->
+
+		<!-- <div class="content">
+			<div class="content__agree">
+				<input type="radio" class="radio" id="tea" name="beverages" />
+				<label for="tea">Чай</label>
+
+				<input type="radio" class="radio" id="coffee" name="beverages" />
+				<label for="coffee">Кофе</label>
+			</div>
+			<button class="button">Отправить</button>
+		</div> -->
+
+		<!-- 3=================================================== -->
+
+		<!-- Создать поле ввода (пароль)
+Кнопка отправить
+Если пользователь вводит текст “пароль” то поле ввода должно быть подсвечено зеленым цветом
+Если пароль неверный, у поля ввода появляется красная обводка и текст “пароль неверный” -->
+		<!-- <div class="content">
+			<input type="text" class="password" />
+			<button class="button">Отправить</button>
+		</div> -->
+
+		<!-- 4=================================================== -->
+
+		<!-- Создать поле ввода и под ним заголовок h1 с текстом “Заголовок”
+При вводе текста в поле ввода необходимо чтобы текст внутри заголовка менятся на введенный в поле ввода -->
+		<!-- <h1 class="title">Заголовок</h1>
+		<input type="text" class="input" /> -->
+
+		<script>
+
+            			// <!-- 1=================================================== -->
+
+			// const boxAgree = document.querySelector(".content__agree");
+			// const checkEl = boxAgree.querySelector(".check");
+			// const buttonEl = document.querySelector(".button");
+			// const h2El = document.createElement('h2');
+			// h2El.textContent = 'Нужно согласиться';
+
+			// buttonEl.addEventListener("click", function (e) {
+			// 	if (!checkEl.checked) {
+			// 	boxAgree.appendChild(h2El);
+			// } else {
+			// 	boxAgree.removeChild(h2El);
+			// }
+			// });
+
+			// <!-- 2=================================================== -->
+
+			// const boxAgree = document.querySelector(".content__agree");
+			// const radioButton = document.querySelectorAll(".radio");
+			// const buttonEl = document.querySelector(".button");
+			// const h2El = document.createElement("h2");
+			// h2El.textContent = "Выберите напиток";
+
+			// buttonEl.addEventListener("click", function (element) {
+			// 	radioButton.forEach((element) => {
+			// 		if (element.checked) {
+			// 			h2El.textContent = `${element.nextElementSibling.textContent} отсутствует`;
+			// 			boxAgree.appendChild(h2El);
+			// 		}
+			// 	});
+			// });
+			// <!-- 3=================================================== -->
+			// const boxAgree = document.querySelector(".content");
+			// const passEl = document.querySelector(".password");
+			// const buttonEl = document.querySelector(".button");
+			// const h2El = document.createElement("h2");
+			// h2El.textContent = "Пароль неверный";
+
+			// passEl.addEventListener("input", function (e) {
+			// 	if (passEl.value === "пароль") {
+			// 		passEl.style.border = "1px solid lightgreen";
+			// 		boxAgree.removeChild(h2El);
+			// 	} else {
+			// 		passEl.style.border = "1px solid red";
+			// 		boxAgree.appendChild(h2El);
+			// 	}
+			// });
+
+			// <!-- 4=================================================== -->
+			// const titleEl = document.querySelector(".title");
+			// const inputEl = document.querySelector(".input");
+
+			// inputEl.addEventListener("input", function (e) {
+			// 	if (!inputEl.value) {
+			// 		titleEl.textContent = "Заголовок";
+			// 	} else {
+			// 		titleEl.textContent = inputEl.value;
+			// 	}
+			// });
+		</script>
+	</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      class Person {
+        constructor(firstName, age) {
+          this.firstName = firstName;
+          this.age = age;
+        }
+
+        displayInfo() {
+          console.log(`${this.firstName}, ${this.age}, ${this.year}`);
+        }
+      }
+
+      const getYearOfBirth = (age, currentYear) => {
+        return currentYear - age;
+      };
+
+      const addField = (object, key, value) => {
+        object[key] = value;
+        return object;
+      };
+
+      const jsonData = [
+        {
+          firstName: "Иван",
+          age: 25,
+        },
+        {
+          firstName: "Мария",
+          age: 30,
+        },
+      ];
+
+      const currentYear = new Date().getFullYear();
+
+      jsonData.forEach((data) => {
+        const person = new Person(data.firstName, data.age);
+
+        const yearOfBirth = getYearOfBirth(person.age, currentYear);
+        addField(person, "year", yearOfBirth);
+
+        person.displayInfo();
+      });
+    </script>
+  </body>
+</html>

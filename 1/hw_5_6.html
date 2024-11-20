@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+//         Создайте функцию, которая возводит переданное число в куб.
+// Необходимо использовать эту функцию для вычисления и вывода в консоль
+// результата 2
+//             3 + 3
+//             3
+
+function cube(number) {
+    return number ** 3;
+}
+let result = cube(2) + cube(3);
+console.log(result);
+
+//     1. Пользователь вводит с клавиатуры число.Если введён текст, необходимо
+// вывести сообщение о неверном значении.
+// 2. Создайте функцию, которая вычисляет 13 % от данного числа и выводит в
+// консоль текст:
+//     "Размер заработной платы за вычетом налогов равен “значение”".
+
+function salaryCalc(salary) {
+    return salary * 0,87;
+}
+    let input = prompt('Ваше число: ');
+    let num = parseFloat(input);
+
+if (isNaN(num)) {
+    console.log('Неверно введено значение');
+}
+    else {
+        let itog = salaryCalc(num);
+        console.log(`Размер заработной платы за вычетом налогов равен ${itog}`);
+    }
+
+    // Пользователь вводит с клавиатуры 3 числа.Создайте функцию, которая определяет максимальное значение среди этих чисел.
+function findMax(a, b, c) {
+    let max = a;
+    if (b > max) {
+        max = b;
+    }
+    if (c > max) {
+        max = c;
+    }
+    return max;
+}
+    let firstNum = prompt('Введите первое число: ');
+    let secondNum = prompt('Введите второе число: ');
+    let thirdNum = prompt('Введите третье число: ');
+let max = findMax(firstNum, secondNum, thirdNum);
+console.log('Максимальное число из трех введенных вами: ', max)
+
+// Реализуйте четыре функции, каждая из которых выполняет одну из следующих операций с двумя числами: 1. Сложение 2. Вычитание 3. Умножение 4. Деление Функции должны возвращать результат операции.
+function add (a, b) {
+    return a + b;
+}
+function subtract(a, b) {return a > b ? a- b : 0; };
+function multiply(a, b) { return a * b; };
+function divide(a, b) { return b !== 0 ? a / b : 'Деление на ноль недопустимо'; };
+console.log(add(2, 6));
+console.log(subtract(5, 3));
+console.log(multiply(4, 7));
+console.log(divide(10, 2));
+console.log(divide(10, 0)); 
+    </script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Homework 5</title>
+	</head>
+	<body>
+		<p class="super_element">Привет</p>
+		<img src="#" alt="" />
+		<img src="#" alt="" />
+		<img src="#" alt="" />
+		<img src="#" alt="" />
+		<img src="#" alt="" />
+		<img src="#" alt="" />
+		<img src="#" alt="" /> <br />
+		<button>Кнопка</button>
+		<button class="super_element">Кнопка с классом btn</button>
+		<button>Кнопка</button> <br />
+		<textarea></textarea> <br />
+		<ul>
+			<li><button>Кнопка 1</button></li>
+			<li><button>Кнопка 2</button></li>
+			<li><button>Кнопка 3</button></li>
+			<li><button>Кнопка 4</button></li>
+		</ul>
+		<script>
+			// 1. Сообщение "все теги прогрузились"
+			// document.addEventListener("DOMContentLoaded", () => {
+			// 	console.log("все теги прогрузились");
+			// });
+
+			// 2. Сообщение "страница загрузилась"
+			// window.addEventListener("load", () => {
+			// 	console.log("страница загрузилась");
+			// });
+
+			// 3. Делегирование для определения класса и тега элемента
+			// document.body.addEventListener("click", (event) => {
+			// 	const target = event.target;
+			// 	const tagName = target.tagName.toLowerCase();
+			// 	const hasSuperClass = target.classList.contains("super_element");
+			// 	if (hasSuperClass) {
+			// 		console.log(
+			// 			`Класс "super_element" присутствует в элементе "${tagName}".`
+			// 		);
+			// 	} else {
+			// 		console.log(
+			// 			`Класс "super_element" отсутствует в элементе "${tagName}".`
+			// 		);
+			// 	}
+			// });
+
+			// 4. Сообщение при наведении на <textarea>
+			// const textarea = document.querySelector("textarea");
+			// textarea.addEventListener("mouseover", () => {
+			// 	console.log("Вы навели на textarea.");
+			// });
+
+			// 5. Делегирование для кнопок внутри <ul>
+			const ulElement = document.querySelector("ul");
+			ulElement.addEventListener("click", (event) => {
+				if (event.target.tagName === "BUTTON") {
+					console.log(event.target.textContent);
+				}
+			});
+
+			// 6. Ответ на вопрос // При клике на кнопке в <ul>, сначала выводится текст из 5 задания,потому что события обрабатываются в порядке их добавления, а событие клика на <ul> происходит до того, как событие нажатия на кнопку внутри <ul> будет полностью обработано. Поэтому текст из 5 задания выводится раньше.
+
+			// 7. Изменение цвета фона каждого второго тега <li>
+			const liElements = document.querySelectorAll("ul li");
+			liElements.forEach((li, row) => {
+				if (row % 2 === 0) {
+					// Каждый второй элемент
+					li.style.backgroundColor = "lightgrey";
+				}
+			});
+		</script>
+	</body>
+</html>

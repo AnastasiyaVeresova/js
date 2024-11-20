@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<!-- В html создать кнопку button
+    После загрузки страницы вывести в консоль текст “страница загрузилась”
+    Добавить событие onclick которое выводит в консоль текст “событие onclick”
+    Добавить событие addEventListener которое выводит в консоль текст “событие addEventListener” -->
+		<!-- <button class="button">Кнопа</button> -->
+
+		<!-- Создать в html три кнопки button с нумерацией (1, 2, 3 соответственно)
+Добавить клик на кнопку , чтобы в консоль выводилась именно та кнопка на которую мы нажали
+Добавить кнопку button с текстом 4, которая считает сколько раз на нее нажали и количество нажатий на эту кнопку выводит
+в консоль
+Создать кнопку button с текстом 5, При клике на которую, меняется текст данной кнопки на “Вы нажали на эту кнопку” -->
+
+		<!-- <button class="button">1</button>
+<button class="button">2</button>
+<button class="button">3</button>
+<button class="button2">4</button>
+<button class="button3">5</button> -->
+
+		<!-- Создать кнопку, которая добавляем заголовок h1 с текстом, “Новый заголовок, данный элемент нужно расположить после
+кнопки
+Создать вторую кнопку, которая будет удалять созданный заголовок h1
+Создать третью кнопку, при наведении на которую в консоль будет выводиться текст “вы навели на данную кнопку” , как
+только вы убираем курсор мыши с кнопки, в консоли должен появиться текст “Наведения на кнопку больше нет”
+ -->
+		<!-- <div class="content">
+			<button class="button1">Добавить</button>
+			<button class="button2">Удалить</button>
+			<button class="button3">Навести</button>
+		</div> -->
+
+		<!-- Создать в html список состоящий из 3-х произвольных элементов li
+Нужно создать кнопку которая будет добавлять элементы списка с текстом “новый элемент списка”
+Создать кнопку, которая будет удалять первый элемент из созданного списка
+Создать кнопку, при клике на которую ей добавляется класс “click” -->
+
+		<ul class="ul">
+			<li class="list">list-1</li>
+			<li class="list">list-2</li>
+			<li class="list">list-3</li>
+		</ul>
+
+		<button class="buttonAdd">add item</button>
+		<button class="buttonRemove">remove</button>
+		<button class="add">add class</button>
+
+		<script>
+			// const buttonEl = document.querySelector('.button');
+			// const bodyEl = document.querySelector('body');
+
+			// bodyEl.onload = function () {
+			//     console.log('страница загрузилась');
+			// }
+
+			// window.addEventListener("load", function (e){
+			//     console.log('страница загрузилась');
+			// }
+			// );
+
+			// buttonEl.onclick =  function() {
+			//     console.log('click on click 1');
+			// }
+
+			// buttonEl.addEventListener('click', function (e) {
+			//     console.log('click on click 2');
+			// });
+
+			// const buttons = document.querySelectorAll('.button');
+
+			// buttons.forEach(element => {
+			//     element.addEventListener('click', function (e) {
+			// const target = e.target;
+			//         console.log(target);
+			//     });
+			// });
+
+			// const button2El = document.querySelector('.button2');
+			// let count = 0;
+			// button2El.addEventListener('click', function (e) {
+			// console.log(++count);
+			// });
+			//     const button3El = document.querySelector('.button3');
+			//     button3El.addEventListener('click', function (e) {
+			// button3El.textContent = 'Вы нажали на 5 кнопку'
+			// });
+
+			// const button1El = document.querySelector(".button1");
+			// const button2El = document.querySelector(".button2");
+			// const button3El = document.querySelector(".button3");
+
+			// const h1El = document.createElement("h1");
+			// h1El.textContent = "Новый заголовок";
+			// button1El.addEventListener("click", function (e) {
+			// 	button1El.parentElement.appendChild(h1El);
+			// });
+			// button2El.addEventListener("click", function (e) {
+			// 	button2El.parentElement.removeChild(h1El);
+			// });
+
+			// button3El.addEventListener("mouseover", function (e) {
+			// 	console.log("Навели");
+			// 	console.log(e.target);
+			// });
+			// button3El.addEventListener("mouseout", function (e) {
+			// 	console.log("Убрали");
+			// });
+
+			const ulEl = document.querySelector(".ul");
+			const buttonAddEl = document.querySelector(".buttonAdd");
+			const buttonRemoveEl = document.querySelector(".buttonRemove");
+
+			buttonAddEl.addEventListener("click", function (e) {
+				const listEl = document.createElement("li");
+				listEl.textContent = "Новый элемент списка";
+				listEl.classList.add("list");
+				ulEl.appendChild(listEl);
+			});
+
+			buttonRemoveEl.addEventListener("click", function (e) {
+				const firstListEl = document.querySelector(".list:first-child");
+				ulEl.removeChild(firstListEl);
+			});
+
+			const addClass = document.querySelector(".add");
+			addClass.addEventListener("click", function (e) {
+				const target = e.target;
+				target.classList.add("click");
+			});
+		</script>
+	</body>
+</html>
