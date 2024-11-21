@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+    #notice {
+display: inline-block;
+margin-bottom: 12px;
+border-radius: 5px;
+width: 600px;
+padding: 5px;
+border: 2px #7FDF55 solid;
+}
+#rules {
+width: 600px;
+height: 130px;
+padding: 5px;
+border: #2A9F00 solid 2px;
+border-radius: 5px;
+}
+
+.big {
+background: #ccc;
+height: 300px;
+}
+.box {
+background: lightgreen;
+height: 40px;
+}
+
+.box.over {
+border: 3px dotted #666;
+}
+
+.container {
+display: grid;
+grid-template-columns: repeat(5, 1fr);
+gap: 10px;
+}
+.box {
+border: 3px solid #666;
+background-color: #ddd;
+border-radius: .5em;
+padding: 10px;
+cursor: move;
+}
+
+.big {
+background: #ccc;
+height: 300px;
+}
+.box {
+background: lightgreen;
+height: 40px;
+}
+
+
+</style>
+</style>
+</head>
+
+<body>
+    <form name="registration">
+<p id="notice">Пожалуйста, прокрутите и прочитайте следующий текст.</p>
+<p>
+<textarea id="rules">
+Регистрируясь на сайте, я соглашаюсь со следующими условиями:
+Условие 1
+Условие 2
+...
+Условие 99
+Условие 100
+</textarea>
+</p>
+<p>
+<input type="checkbox" id="agree" />
+<label for="agree">Я согласен</label>
+<input type="submit" id="nextstep" value="Далее" />
+</p>
+</form>
+
+
+<button type="button">Нажми на меня</button>
+<div class="big"></div>
+<div id="box" class="box">Скрытый элемент</div>
+
+
+<div class="container">
+<div draggable="true" class="box">A</div>
+<div draggable="true" class="box">B</div>
+<div draggable="true" class="box">C</div>
+</div>
+
+
+
+
+
+
+    <script src="API.js"></script>
+</body>
+
+</html>
