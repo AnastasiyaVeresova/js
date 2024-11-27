@@ -1,0 +1,16 @@
+{
+  "name": "seminar_2",
+  "version": "1.0.0",
+  "main": "NPM_sem_2.js",
+  "scripts": {
+    "start": "node ./NPM_sem_2.js",
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "number-precision": "^1.6.0"
+  }
+}
