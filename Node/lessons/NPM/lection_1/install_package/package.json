@@ -1,0 +1,15 @@
+{
+  "name": "install_package",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@asia_9000/package_one": "^1.0.0",
+    "test_asia_9000_package_one": "^1.1.0"
+  }
+}

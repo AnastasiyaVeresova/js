@@ -1,0 +1,13 @@
+{
+  "name": "init_AV_math",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./index.js"
+  },
+  "keywords": [],
+  "author": "AV",
+  "license": "ISC",
+  "dependencies": {
+  }
+}
