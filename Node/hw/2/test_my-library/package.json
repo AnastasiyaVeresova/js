@@ -1,0 +1,15 @@
+{
+  "name": "test_my-library",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "test_asia_9000_my-library": "^1.1.0"
+  }
+}
