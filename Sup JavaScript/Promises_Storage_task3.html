@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Furniture Selector</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+        }
+        .input-group {
+            margin-bottom: 20px;
+        }
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .input-group select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .output {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            min-height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="input-group">
+            <label for="table">Выберите стол:</label>
+            <select id="table">
+                <option value="oak">Дуб</option>
+                <option value="pine">Сосна</option>
+                <option value="walnut">Орех</option>
+            </select>
+        </div>
+        <div class="input-group">
+            <label for="chair">Выберите стул:</label>
+            <select id="chair">
+                <option value="leather">Кожа</option>
+                <option value="fabric">Ткань</option>
+                <option value="plastic">Пластик</option>
+            </select>
+        </div>
+        <div class="input-group">
+            <label for="sofa">Выберите диван:</label>
+            <select id="sofa">
+                <option value="modern">Современный</option>
+                <option value="classic">Классический</option>
+                <option value="rustic">Деревенский</option>
+            </select>
+        </div>
+        <button id="save">Сохранить комплект</button>
+        <button id="clear">Очистить настройки</button>
+        <div id="result" class="output"></div>
+    </div>
+    <!-- <script src="/lesson/Promises_Storage.js"></script> -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const tableSelect = document.getElementById('table');
+            const chairSelect = document.getElementById('chair');
+            const sofaSelect = document.getElementById('sofa');
+            const saveButton = document.getElementById('save');
+            const clearButton = document.getElementById('clear');
+            const resultDiv = document.getElementById('result');
+        
+            // Загрузка сохраненных настроек при загрузке страницы
+            const loadSettings = () => {
+                const savedSettings = localStorage.getItem('furnitureSettings');
+                if (savedSettings) {
+                    const settingsArray = JSON.parse(savedSettings);
+                    displayResults(settingsArray);
+                }
+            };
+        
+            // Отображение выбранных комплектов
+            const displayResults = (settingsArray) => {
+                resultDiv.innerHTML = settingsArray.map(settings => `
+                    <div>
+                        <p>Стол: ${getOptionText(tableSelect, settings.table)}</p>
+                        <p>Стул: ${getOptionText(chairSelect, settings.chair)}</p>
+                        <p>Диван: ${getOptionText(sofaSelect, settings.sofa)}</p>
+                    </div>
+                `).join('');
+            };
+        
+            // Получение текста опции по значению
+            const getOptionText = (selectElement, value) => {
+                const option = Array.from(selectElement.options).find(opt => opt.value === value);
+                return option ? option.text : '';
+            };
+        
+            // Сохранение настроек
+            saveButton.addEventListener('click', () => {
+                const settings = {
+                    table: tableSelect.value,
+                    chair: chairSelect.value,
+                    sofa: sofaSelect.value
+                };
+                const savedSettings = localStorage.getItem('furnitureSettings');
+                const settingsArray = savedSettings ? JSON.parse(savedSettings) : [];
+                settingsArray.push(settings);
+                localStorage.setItem('furnitureSettings', JSON.stringify(settingsArray));
+                displayResults(settingsArray);
+            });
+        
+            // Очистка настроек
+            clearButton.addEventListener('click', () => {
+                localStorage.removeItem('furnitureSettings');
+                resultDiv.textContent = 'Выбор не сделан. Предыдущие настройки удалены.';
+                tableSelect.value = tableSelect.options[0].value;
+                chairSelect.value = chairSelect.options[0].value;
+                sofaSelect.value = sofaSelect.options[0].value;
+            });
+        
+            // Загрузка сохраненных настроек при загрузке страницы
+            loadSettings();
+        });
+        
+    </script>
+</body>
+</html>

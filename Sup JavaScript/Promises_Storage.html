@@ -25,20 +25,54 @@
 <body>
     <button class="load-button">Загрузить новости</button>
     <div class="news-container"></div>
+    <!-- <script src="/lesson/Promises_Storage.js"></script> -->
+    <script>
+        const newsDatabase = [
+        { title: "Новость 1", content: "Содержание новости 1" },
+        { title: "Новость 2", content: "Содержание новости 2" },
+        { title: "Новость 3", content: "Содержание новости 3" }
+    ];
 
-    <script src="Promises_Storage.js">
-        function fetchNews() {
-            return new Promise((resolve, reject) => {
-                setTimeout(() => {}, 2000)
-            })
-        }
+    function fetchNews() {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                if (Math.random() < 0.1) {
+                    reject(new Error("Ошибка загрузки новостей"));
+                } else {
+                    resolve(newsDatabase);
+                }
+            }, 2000);
+        });
+    }
+
+    const button = document.querySelector('.load-button');
+    const newsContainer = document.querySelector('.news-container');
+
+    button.addEventListener('click', () => {
+        button.disabled = true;
+        newsContainer.innerHTML = ''; // Очистка контейнера перед загрузкой новых новостей
+
         fetchNews()
-            .then((result) => {
-
-            }).catch((err) => {
-
+            .then(news => {
+                news.forEach(article => {
+                    const newsItem = document.createElement('div');
+                    newsItem.className = 'news-item';
+                    newsItem.innerHTML = `<h3>${article.title}</h3><p>${article.content}</p>`;
+                    newsContainer.appendChild(newsItem);
+                });
             })
+            .catch(error => {
+                const errorMessage = document.createElement('div');
+                errorMessage.className = 'error';
+                errorMessage.textContent = error.message;
+                newsContainer.appendChild(errorMessage);
+            })
+            .finally(() => {
+                button.disabled = false;
+            });
+    });
     </script>
+
 </body>
 
 </html>

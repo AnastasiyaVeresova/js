@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LocalStorage Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+        }
+        .input-group {
+            margin-bottom: 20px;
+        }
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .input-group button {
+            padding: 10px 20px;
+            margin-right: 10px;
+        }
+        .output {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            min-height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="input-group">
+            <input type="text" id="userInput" placeholder="Введите текст">
+            <button id="saveButton">Сохранить</button>
+            <button id="loadButton">Загрузить</button>
+            <button id="clearButton">Очистить</button>
+        </div>
+        <div class="output" id="output"></div>
+    </div>
+    <!-- <script src="/lesson/Promises_Storage.js"></script> -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const userInput = document.getElementById('userInput');
+        const saveButton = document.getElementById('saveButton');
+        const loadButton = document.getElementById('loadButton');
+        const clearButton = document.getElementById('clearButton');
+        const output = document.getElementById('output');
+    
+        saveButton.addEventListener('click', () => {
+            const text = userInput.value;
+            if (text) {
+                const savedText = localStorage.getItem('savedText') || '';
+                const newText = savedText + ' ' + text;
+                localStorage.setItem('savedText', newText);
+                output.textContent = 'Текст сохранен!';
+            } else {
+                output.textContent = 'Введите текст для сохранения.';
+            }
+        });
+    
+        loadButton.addEventListener('click', () => {
+            const savedText = localStorage.getItem('savedText');
+            if (savedText) {
+                const lines = savedText.split(' ');
+                output.innerHTML = lines.map(line => `<div>${line}</div>`).join('');
+            } else {
+                output.textContent = 'Нет сохраненного текста.';
+            }
+        });
+    
+        clearButton.addEventListener('click', () => {
+            localStorage.removeItem('savedText');
+            output.textContent = 'Сохраненный текст удален.';
+        });
+    });
+    
+    
+</script>
+
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Furniture Selector</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+        }
+        .input-group {
+            margin-bottom: 20px;
+        }
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .input-group select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .output {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            min-height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="input-group">
+            <label for="table">Выберите стол:</label>
+            <select id="table">
+                <option value="oak">Дуб</option>
+                <option value="pine">Сосна</option>
+                <option value="walnut">Орех</option>
+            </select>
+        </div>
+        <div class="input-group">
+            <label for="chair">Выберите стул:</label>
+            <select id="chair">
+                <option value="leather">Кожа</option>
+                <option value="fabric">Ткань</option>
+                <option value="plastic">Пластик</option>
+            </select>
+        </div>
+        <div class="input-group">
+            <label for="sofa">Выберите диван:</label>
+            <select id="sofa">
+                <option value="modern">Современный</option>
+                <option value="classic">Классический</option>
+                <option value="rustic">Деревенский</option>
+            </select>
+        </div>
+        <button id="save">Сохранить комплект</button>
+        <button id="clear">Очистить настройки</button>
+        <div id="result" class="output"></div>
+    </div>
+    <!-- <script src="/lesson/Promises_Storage.js"></script> -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const registerButton = document.getElementById('registerButton');
+            const loginButton = document.getElementById('loginButton');
+            const logoutButton = document.getElementById('logoutButton');
+            const output = document.getElementById('output');
+        
+            // Регистрация
+            if (registerButton) {
+                registerButton.addEventListener('click', () => {
+                    const username = document.getElementById('username').value;
+                    const password = document.getElementById('password').value;
+                    if (username && password) {
+                        localStorage.setItem('username', username);
+                        localStorage.setItem('password', password);
+                        output.textContent = 'Регистрация успешна! Перенаправляем на страницу входа...';
+                        setTimeout(() => {
+                            window.location.href = 'login.html';
+                        }, 2000);
+                    } else {
+                        output.textContent = 'Пожалуйста, заполните все поля.';
+                    }
+                });
+            }
+        
+            // Вход
+            if (loginButton) {
+                loginButton.addEventListener('click', () => {
+                    const username = document.getElementById('username').value;
+                    const password = document.getElementById('password').value;
+                    const savedUsername = localStorage.getItem('username');
+                    const savedPassword = localStorage.getItem('password');
+                    if (username === savedUsername && password === savedPassword) {
+                        output.textContent = 'Вход успешен! Перенаправляем на страницу приветствия...';
+                        setTimeout(() => {
+                            window.location.href = 'welcome.html';
+                        }, 2000);
+                    } else {
+                        output.textContent = 'Неверный логин или пароль.';
+                    }
+                });
+            }
+        
+            // Выход
+            if (logoutButton) {
+                logoutButton.addEventListener('click', () => {
+                    localStorage.removeItem('username');
+                    localStorage.removeItem('password');
+                    window.location.href = 'login.html';
+                });
+            }
+        });
+                
+    </script>
+</body>
+</html>
