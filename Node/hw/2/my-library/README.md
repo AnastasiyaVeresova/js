@@ -11,12 +11,12 @@
 ```sh
 ## Для установки используйте команды:
 
-npm install my-library
+npm install test_asia_9000_my-library
 
 ## Установка глобальных пакетов:
 Если вы хотите установить библиотеку глобально, чтобы она была доступна для всех проектов, используйте флаг -g:
 
-npm install -g my-library
+npm install -g test_asia_9000_my-library
 ```
 
 ### Удаление
@@ -24,5 +24,5 @@ npm install -g my-library
 ```javascript
 ## Для удаления используйте команды:
 
-npm uninstall my-library
+npm uninstall test_asia_9000_my-library
 ```

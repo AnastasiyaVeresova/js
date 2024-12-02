@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "NPM_sem_2.js",
   "scripts": {
-    "start": "node ./NPM_sem_2.js",
+    "start": "node ./NPM_sem_2.js"
   },
   "keywords": [],
   "author": "",
