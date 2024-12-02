@@ -26,3 +26,11 @@ npm install -g test_asia_9000_my-library
 
 npm uninstall test_asia_9000_my-library
 ```
+
+### Пример использования
+
+```javascript
+const {
+	getRandomAddress,
+	getRandomName,
+} = require("test_asia_9000_my-library");
