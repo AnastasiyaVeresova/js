@@ -1,0 +1,76 @@
+<!-- Вашей задачей является создание веб-слайдера для отображения изображений на веб-странице. Слайдер должен позволять переключаться между изображениями и отображать их в центре экрана.
+
+1. Создайте интерфейс веб-страницы, который включает в себя следующие элементы:
+
+a. Контейнер для отображения текущего изображения.
+b. Кнопки "Предыдущее изображение" и "Следующее изображение" для переключения между изображениями.
+c. Навигационные точки (индикаторы) для быстрого переключения между изображениями.
+
+2. Используйте HTML для создания элементов интерфейса.
+
+3. Используйте JavaScript для обработки событий:
+
+a. При клике на кнопку "Предыдущее изображение" должно отображаться предыдущее изображение.
+b. При клике на кнопку "Следующее изображение" должно отображаться следующее изображение.
+c. При клике на навигационные точки, слайдер должен переключаться к соответствующему изображению.
+
+4. Слайдер должен циклически переключаться между изображениями, то есть после последнего изображения должно отображаться первое, и наоборот.
+
+5. Добавьте стилизацию для слайдера и элементов интерфейса с использованием CSS для улучшения внешнего вида. -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Slider</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="slider-container">
+        <div class="slider">
+            <img src="img/1.jpg" alt="Image 1" class="slide active">
+            <img src="img/2.jpg" alt="Image 2" class="slide">
+            <img src="img/3.jpg" alt="Image 3" class="slide">
+            <img src="img/4.jpg" alt="Image 3" class="slide">
+            <img src="img/5.jpg" alt="Image 3" class="slide">
+
+        </div>
+        <button class="prev" onclick="prevSlide()"><i class="fas fa-chevron-left"></i></button>
+        <button class="next" onclick="nextSlide()"><i class="fas fa-chevron-right"></i></button>
+        <div class="dots">
+            <span class="dot active" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+            <span class="dot" onclick="currentSlide(4)"></span>
+            <span class="dot" onclick="currentSlide(5)"></span>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Slider</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="slider-container">
+        <div class="slider" id="slider">
+            <!-- Images will be inserted here by JavaScript -->
+        </div>
+        <button class="prev" onclick="prevSlide()"><i class="fas fa-chevron-left"></i></button>
+        <button class="next" onclick="nextSlide()"><i class="fas fa-chevron-right"></i></button>
+        <div class="dots" id="dots">
+            <!-- Dots will be inserted here by JavaScript -->
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

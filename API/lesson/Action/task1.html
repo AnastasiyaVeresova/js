@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .content {
+        opacity: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: all 0.3s ease;
+    }
+    .content.visible {
+        opacity: 1;
+        max-height: 500px;
+        transition: all 0.3s ease;
+    }
+</style>
+<body>
+    <div class="price">
+        <div data-price="25">Тoвар 1</div>
+        <div data-price="50">Тoвар 2</div>
+        <div data-price="75">Тoвар 3</div>
+        <div data-price="100">Тoвар 4</div>
+    </div>
+    <div class="rating">
+        <div data-rating="5">Тoвар 1</div>
+        <div data-rating="3">Тoвар 2</div>
+        <div data-rating="4">Тoвар 3</div>
+        <div data-rating="2">Тoвар 4</div>     
+
+    </div>
+         <input type="checkbox" id="tooggleCheckbox">
+        <label for="tooggleCheckbox">Показать/Скрыть контент</label>
+
+<div class="content">
+    <h1>Заголовок</h1>
+    <p>Содержимое контента</p>
+</div>  <script>
+    const checkbox = document.getElementById('tooggleCheckbox');
+    const content = document.querySelector('.content');
+
+    checkbox.addEventListener('change', function (e) {
+        if (this.checked) {
+            content.classList.add('visible');
+        }else {
+            content.classList.remove('visible');
+        }
+    })
+</script>
+    <script src="atr.js"></script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!-- У вас есть кнопка "Купить". Создайте скрипт, который при клике на эту кнопку меняет её текст на "Товар
+добавлен в корзину" в течение 2 секунд, а затем возвращает исходный текст "Купить". В обработчике
+события клика также проверьте, является ли событие доверенным. Если событие является доверенным,
+выполните изменение текста кнопки и убедитесь, что после 2 секунд текст возвращается в исходное
+состояние. -->
+
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кнопка Купить</title>
+</head>
+<body>
+    <button id="buyButton">Купить</button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const button = document.getElementById('buyButton');
+            const originalText = button.textContent;
+            const newText = "Товар добавлен в корзину";
+
+            button.addEventListener('click', function(event) {
+                // Проверка, является ли событие доверенным
+                if (event.isTrusted) {
+                    button.textContent = newText;
+
+                    setTimeout(function() {
+                        button.textContent = originalText;
+                    }, 2000);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

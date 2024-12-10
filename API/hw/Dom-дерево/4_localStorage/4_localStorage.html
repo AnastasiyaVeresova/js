@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Расписание занятий</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .class-item {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Расписание занятий</h1>
+        <div id="classes-container" class="mt-4"></div>
+    </div>
+
+    <script>
+        // Функция для загрузки данных из localStorage
+        function loadClassesFromLocalStorage() {
+            const storedData = localStorage.getItem('classesData');
+            return storedData ? JSON.parse(storedData) : [];
+        }
+
+        // Функция для сохранения данных в localStorage
+        function saveClassesToLocalStorage(classes) {
+            localStorage.setItem('classesData', JSON.stringify(classes));
+        }
+
+        // Пример JSON-данных о занятиях
+        let classesData = loadClassesFromLocalStorage();
+        if (classesData.length === 0) {
+            classesData = [
+                {
+                    name: "Йога",
+                    time: "10:00 - 11:00",
+                    maxParticipants: 15,
+                    currentParticipants: 10
+                },
+                {
+                    name: "Фитнес",
+                    time: "12:00 - 13:00",
+                    maxParticipants: 20,
+                    currentParticipants: 15
+                },
+                {
+                    name: "Пилатес",
+                    time: "14:00 - 15:00",
+                    maxParticipants: 10,
+                    currentParticipants: 8
+                }
+            ];
+            saveClassesToLocalStorage(classesData);
+        }
+
+        // Функция для отображения занятий
+        function displayClasses(classes) {
+            const container = document.getElementById('classes-container');
+            container.innerHTML = '';
+
+            classes.forEach((cls, index) => {
+                const classElement = document.createElement('div');
+                classElement.className = 'class-item';
+                classElement.innerHTML = `
+                    <h3>${cls.name}</h3>
+                    <p>Время: ${cls.time}</p>
+                    <p>Макс. участников: ${cls.maxParticipants}</p>
+                    <p>Текущих участников: ${cls.currentParticipants}</p>
+                    <button class="btn btn-primary" onclick="enroll(${index})" ${cls.currentParticipants >= cls.maxParticipants ? 'disabled' : ''}>Записаться</button>
+                    <button class="btn btn-danger" onclick="cancelEnrollment(${index})">Отменить запись</button>
+                `;
+                container.appendChild(classElement);
+            });
+        }
+
+        // Функция для записи на занятие
+        function enroll(index) {
+            if (classesData[index].currentParticipants < classesData[index].maxParticipants) {
+                classesData[index].currentParticipants++;
+                saveClassesToLocalStorage(classesData);
+                displayClasses(classesData);
+            }
+        }
+
+        // Функция для отмены записи на занятие
+        function cancelEnrollment(index) {
+            if (classesData[index].currentParticipants > 0) {
+                classesData[index].currentParticipants--;
+                saveClassesToLocalStorage(classesData);
+                displayClasses(classesData);
+            }
+        }
+
+        // Инициализация отображения занятий
+        displayClasses(classesData);
+    </script>
+</body>
+</html>

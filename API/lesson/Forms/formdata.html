@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<form name="superForm">
+			title: <input name="title" value="test product" />
+			<br />
+			price: <input name="price" value="13.5" />
+			<br />
+			description: <input name="description" value="lorem ipsum set" />
+			<br />
+			image: <input name="image" value="https://i.pravatar.cc/" />
+			<br />
+			category: <input name="category" value="electronic" />
+			<input type="submit" />
+		</form>
+
+		<script>
+			"use strict";
+			const form = document.forms.superForm;
+			form.onsubmit = async (e) => {
+				e.preventDefault();
+
+				let response = await fetch("https://fakestoreapi.com/products", {
+					method: "POST",
+					body: new FormData(form),
+				});
+
+				let result = await response.json();
+				console.log(result);
+			};
+
+			(async () => {
+				let response = await fetch("https://fakestoreapi.com/products");
+				const reader = response.body.getReader();
+
+				let receivedLength = 0;
+				let chunks = [];
+				while (true) {
+					const { done, value } = await reader.read();
+
+					if (done) break;
+
+					chunks.push(value);
+					receivedLength += value.length;
+
+					console.log(`Получено ${receivedLength}`);
+				}
+				let position = 0;
+				for (let chunk of chunks) {
+					chunksAll.set(chunk, position);
+					position += chunk.length;
+				}
+				let result = new TextDecoder("utf-8").decode(chunksAll);
+
+				let commits = JSON.parse(result);
+				console.log(commits);
+			})();
+		</script>
+	</body>
+</html>

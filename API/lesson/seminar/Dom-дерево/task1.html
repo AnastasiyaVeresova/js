@@ -1,0 +1,57 @@
+<!-- Работа с BOM
+1. Определение текущего размера окна браузера:
+○ Напишите функцию, которая будет выводить текущую
+ширину и высоту окна браузера при его изменении.
+2. Подтверждение закрытия страницы:
+○ Создайте всплывающее окно или диалоговое окно,
+которое появляется при попытке закрыть вкладку
+браузера и спрашивает пользователя, уверен ли он в
+своем решении закрыть страницу.
+3. Управление историей переходов:
+○ Используйте объект history для управления историей
+переходов на веб-странице. Создайте кнопки "Назад" и
+"Вперед" для перемещения по истории. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Window Size</title>
+</head>
+<body>
+    <div id="sizeDisplay">Resize the window to see the size.</div>
+
+    <button id="backButton">Назад</button>
+    <button id="forwardButton">Вперед</button>
+
+    <!-- Для вывода текущей ширины и высоты окна браузера при его изменении можно использовать событие resize на объекте window. -->
+    <script>
+        function displayWindowSize() {
+            const width = window.innerWidth;
+            const height = window.innerHeight;
+            document.getElementById('sizeDisplay').innerText = `Width: ${width}, Height: ${height}`;
+        }
+
+        window.addEventListener('resize', displayWindowSize);
+        displayWindowSize(); // Initial call to display the size on load
+
+        <!-- Для создания всплывающего окна, которое спрашивает пользователя о подтверждении закрытия страницы, можно использовать событие beforeunload на объекте window. -->
+        window.addEventListener('beforeunload', function (e) {
+            e.preventDefault();
+            e.returnValue = '';
+        });
+
+        //Для создания кнопок "Назад" и "Вперед" для перемещения по истории можно использовать методы history.back() и history.forward().
+       
+    
+            document.getElementById('backButton').addEventListener('click', function() {
+                history.back();
+            });
+    
+            document.getElementById('forwardButton').addEventListener('click', function() {
+                history.forward();
+            });
+    </script>
+</body>
+</html>

@@ -1,0 +1,181 @@
+<!-- Для создания бесконечной ленты с фотографиями с использованием Unsplash API, выполните следующие
+шаги:
+1. Зарегистрируйтесь на Unsplash:
+○ Перейдите на веб-сайт Unsplash (https://unsplash.com/).
+○ Нажмите кнопку "Join" или "Регистрация", чтобы создать аккаунт, если у вас его еще нет.
+○ Войдите в свой аккаунт Unsplash.
+2. Создайте приложение:
+○ После входа в аккаунт Unsplash, перейдите на страницу разработчика Unsplash
+(https://unsplash.com/developers).
+○ Нажмите "New Application" (Новое приложение).
+○ Заполните информацию о вашем приложении, такую как имя, описание и сайт (вы можете
+использовать http://localhost для тестового сайта).
+○ После заполнения информации, нажмите "Create Application" (Создать приложение).
+Семинар 3. Формы, сетевые запросы
+Продолжение на
+следующем слайде
+Задание 2 (продолжение)
+3. Получите API-ключ:
+○ После создания приложения, вы получите API-ключ. Этот ключ будет
+отображаться в вашей панели управления приложением.
+○ API-ключ представляет собой строку вида YOUR_ACCESS_KEY.
+Скопируйте его.
+4. Измените код HTML и JavaScript:
+○ Откройте вашу HTML-страницу в текстовом редакторе или
+интегрированной среде разработки.
+○ Замените 'YOUR_ACCESS_KEY' в коде JavaScript на ваш собственный
+API-ключ.
+Семинар 3. Формы, сетевые запросы
+Продолжение на
+следующем слайде
+Задание 2 (продолжение)
+Создайте HTML-страницу со следующей
+структурой:
+Семинар 3. Формы, сетевые запросы
+Продолжение на
+следующем слайде
+Задание 2 (продолжение)
+Теперь давайте напишем JavaScript-код
+для загрузки фотографий из Unsplash API
+и отображения их на странице.
+Вставьте следующий код внутри блока
+<script></script> в вашем HTMLфайле:
+Семинар 3. Формы, сетевые запросы
+Задание 2. Бесконечная лента фотографий
+Реализуйте бесконечную ленту с фотографиями. -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infinite Photo Feed</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .photo-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .photo-grid img {
+            width: 300px;
+            height: 300px;
+            object-fit: cover;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="photo-grid" id="photo-grid"></div>
+    <script>
+        const accessKey = 'YOUR_ACCESS_KEY';
+        const photoGrid = document.getElementById('photo-grid');
+        let page = 1;
+        let loading = false;
+
+        function fetchPhotos() {
+            if (loading) return;
+            loading = true;
+            fetch(`https://api.unsplash.com/photos/?client_id=${accessKey}&page=${page}&per_page=30`)
+                .then(response => response.json())
+                .then(data => {
+                    data.forEach(photo => {
+                        const img = document.createElement('img');
+                        img.src = photo.urls.regular;
+                        img.alt = photo.alt_description;
+                        photoGrid.appendChild(img);
+                    });
+                    page++;
+                    loading = false;
+                })
+                .catch(error => {
+                    console.error('Error fetching photos:', error);
+                    loading = false;
+                });
+        }
+
+        window.addEventListener('scroll', () => {
+            if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+                fetchPhotos();
+            }
+        });
+
+        // Initial load
+        fetchPhotos();
+    </script>
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infinite Photo Feed</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .photo-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .photo-grid img {
+            width: 300px;
+            height: 300px;
+            object-fit: cover;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="photo-grid" id="photo-grid"></div>
+    <script>
+        const photoGrid = document.getElementById('photo-grid');
+        let currentIndex = 0;
+        const photos = [
+            'images/photo1.jpg',
+            'images/photo2.jpg',
+            'images/photo3.jpg',
+            'images/photo4.jpg',
+            'images/photo5.jpg',
+            'images/photo6.jpg',
+            'images/photo7.jpg',
+            'images/photo8.jpg',
+            'images/photo9.jpg',
+            'images/photo10.jpg'
+        ];
+
+        function loadPhotos() {
+            const batchSize = 10;
+            for (let i = 0; i < batchSize; i++) {
+                if (currentIndex >= photos.length) {
+                    currentIndex = 0; // Reset to start if end is reached
+                }
+                const img = document.createElement('img');
+                img.src = photos[currentIndex];
+                img.alt = `Photo ${currentIndex + 1}`;
+                photoGrid.appendChild(img);
+                currentIndex++;
+            }
+        }
+
+        window.addEventListener('scroll', () => {
+            if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+                loadPhotos();
+            }
+        });
+
+        // Initial load
+        loadPhotos();
+    </script>
+</body>
+</html>

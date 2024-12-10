@@ -1,0 +1,14 @@
+.block {
+    color:#fff;
+    background-color: blue;
+    width: 100px;
+    height: 100px;
+}
+.content {
+    width: 400px;
+    margin-top: 10px;
+display: flex;
+flex-wrap: wrap;
+gap: 20px;
+
+}
